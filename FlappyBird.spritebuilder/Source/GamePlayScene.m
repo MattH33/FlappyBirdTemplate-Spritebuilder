@@ -10,6 +10,9 @@
     character = (Character*)[CCBReader load:@"Character"];
     //Adds the character as a child of physicsNode, so physics will be applied to it.
     [physicsNode addChild:character];
+    
+    //Makes an obstacle appear.
+    [self addObstacle];
 }
 
 -(void)update:(CCTime)delta
@@ -17,9 +20,9 @@
     // put update code here
 }
 
-// put new methods here
+//Method that defines what happens when a user taps the screen.
 - (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event {
-    // this will get called every time the player touches the screen
+    //This makes the character flap when the screen is touched.
     [character flap];
 }
 
