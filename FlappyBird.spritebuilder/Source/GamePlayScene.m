@@ -13,11 +13,25 @@
     
     //Makes an obstacle appear.
     [self addObstacle];
+    timeSinceObstacle = 0.0f;
 }
 
 -(void)update:(CCTime)delta
+// this will be run every frame.
+// delta is the time that has elapsed since the last time it was run. This is usually once every second, but can be bigger if the game slows down
 {
-    // put update code here
+    // Increment the time since the last obstacle was added
+    timeSinceObstacle += delta; // delta is approximately 1/60th of a second
+    
+    // Check to see if two seconds have passed
+    if (timeSinceObstacle > 2.0f)
+    {
+        // Add a new obstacle
+        [self addObstacle];
+        
+        // Then reset the timer.
+        timeSinceObstacle = 0.0f;
+    }
 }
 
 //Method that defines what happens when a user taps the screen.

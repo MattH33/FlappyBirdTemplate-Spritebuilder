@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
     Character*     character;
     //References a node that simulates physics.
     CCPhysicsNode* physicsNode;
+    //Creates a variable that will contain the time since an obstacle was last created.
+    float timeSinceObstacle;
 }
 
 -(void) initialize;
