@@ -8,6 +8,7 @@
 {
     //Loads a new Character named "Character" from the CCB file(SpriteBuilder file).
     character = (Character*)[CCBReader load:@"Character"];
+    
     //Adds the character as a child of physicsNode, so physics will be applied to it.
     [physicsNode addChild:character];
     
@@ -17,8 +18,8 @@
 }
 
 -(void)update:(CCTime)delta
-// this will be run every frame.
-// delta is the time that has elapsed since the last time it was run. This is usually once every second, but can be bigger if the game slows down
+//This will be run every frame.
+//delta is the time that has elapsed since the last time it was run. This is usually once every second, but can be bigger if the game slows down
 {
     // Increment the time since the last obstacle was added
     timeSinceObstacle += delta; // delta is approximately 1/60th of a second
@@ -36,6 +37,7 @@
 
 //Method that defines what happens when a user taps the screen.
 - (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event {
+    
     //This makes the character flap when the screen is touched.
     [character flap];
 }
