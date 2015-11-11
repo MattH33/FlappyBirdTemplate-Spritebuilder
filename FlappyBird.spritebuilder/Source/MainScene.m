@@ -229,7 +229,7 @@
                     }
                 }
             }
-        }
+        
         
     NSMutableArray *offScreenObstacles = nil;
     
