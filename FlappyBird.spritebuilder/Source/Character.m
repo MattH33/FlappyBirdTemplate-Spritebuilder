@@ -2,8 +2,8 @@
 //  Character.m
 //  FlappyBird
 //
-//  Created by Gerald on 2/11/14.
-//  Copyright (c) 2014 Apportable. All rights reserved.
+//  Created by Matt H on 2015-11-16.
+//  Copyright © 2015 Apportable. All rights reserved.
 //
 
 #import "Character.h"

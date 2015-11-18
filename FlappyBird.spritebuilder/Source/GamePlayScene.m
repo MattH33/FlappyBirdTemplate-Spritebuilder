@@ -1,3 +1,11 @@
+//
+//  GamePlayScene.m
+//  FlappyBird
+//
+//  Created by Matt H on 2015-11-16.
+//  Copyright © 2015 Apportable. All rights reserved.
+//
+
 #import "GamePlayScene.h"
 #import "Character.h"
 #import "Obstacle.h"

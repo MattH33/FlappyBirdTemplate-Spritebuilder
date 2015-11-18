@@ -1,9 +1,9 @@
 //
 //  MainScene.m
-//  PROJECTNAME
+//  FlappyBird
 //
-//  Created by Benjamin Encz on 10/10/13.
-//  Copyright (c) 2014 MakeGamesWithUs inc. Free to use for all purposes.
+//  Created by Matt H on 2015-11-16.
+//  Copyright © 2015 Apportable. All rights reserved.
 //
 
 #import "MainScene.h"
@@ -124,7 +124,7 @@
 
 #pragma mark - Game Actions
 
-//Defines the gameOver method, which is called when the character collides with another object. This makes the restart button appear, stops all actions 
+//Defines the gameOver method, which is called when the character collides with another object. This makes the restart button appear, stops the camera scrolling, makes the screen shake, and stops the character.
 - (void)gameOver {
     if (!_gameOver) {
         _gameOver = TRUE;
@@ -144,6 +144,7 @@
     }
 }
 
+//Defines the restart method, which resets the scene.
 - (void)restart {
     CCScene *scene = [CCBReader loadAsScene:@"MainScene"];
     [[CCDirector sharedDirector] replaceScene:scene];
@@ -151,6 +152,7 @@
 
 #pragma mark - Obstacle Spawning
 
+//Defines the method that adds obstacles to the scene.
 - (void)addObstacle {
     Obstacle *obstacle = (Obstacle *)[CCBReader load:@"Obstacle"];
     CGPoint screenPosition = [self convertToWorldSpace:ccp(380, 0)];
@@ -164,6 +166,7 @@
 
 #pragma mark - Update
 
+//Defines the method that shows how many pipes the player has passed.
 - (void)showScore
 {
     _scoreLabel.string = [NSString stringWithFormat:@"%d", points];
@@ -172,6 +175,7 @@
 
 - (void)update:(CCTime)delta
 {
+    //Defines the tilt and descent of the character when a user hasn't tapped the screen.
     _sinceTouch += delta;
     
     character.rotation = clampf(character.rotation, -30.f, 90.f);
@@ -187,14 +191,14 @@
     
     physicsNode.position = ccp(physicsNode.position.x - (character.physicsBody.velocity.x * delta), physicsNode.position.y);
     
-    // loop the ground
+    //Loops the ground.
     for (CCNode *ground in _grounds) {
-        // get the world position of the ground
+        //Get the world position of the ground
         CGPoint groundWorldPosition = [physicsNode convertToWorldSpace:ground.position];
-        // get the screen position of the ground
+        //Get the screen position of the ground
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         
-        // if the left corner is one complete width off the screen, move it to the right
+        //If the left corner is one complete width off the screen, move it to the right
         if (groundScreenPosition.x <= (-1 * ground.contentSize.width)) {
             ground.position = ccp(ground.position.x + 2 * ground.contentSize.width, ground.position.y);
         }
@@ -202,6 +206,7 @@
 
     }
     
+    //Handles what happens to obstacles that aren't visible on the screen.
     NSMutableArray *offScreenObstacles = nil;
     
     for (CCNode *obstacle in _obstacles) {
@@ -236,15 +241,14 @@
     
     _parallaxBackground.position = ccp(_parallaxBackground.position.x - (character.physicsBody.velocity.x * delta), _parallaxBackground.position.y);
     
-    // loop the bushes
+    //Loops the bushes and gives them a parallax effect.
     for (CCNode *bush in _bushes) {
-        // get the world position of the bush
+        //Gets the world position of the bush.
         CGPoint bushWorldPosition = [_parallaxBackground convertToWorldSpace:bush.position];
-        // get the screen position of the bush
+        //Gets the screen position of the bush.
         CGPoint bushScreenPosition = [self convertToNodeSpace:bushWorldPosition];
         
-        // if the left corner is one complete width off the screen,
-        // move it to the right
+        //If the left corner is one complete width off the screen, move it to the right.
         if (bushScreenPosition.x <= (-1 * bush.contentSize.width)) {
             for (CGPointObject *child in _parallaxBackground.parallaxArray) {
                 if (child.child == bush) {
@@ -254,15 +258,14 @@
         }
     }
     
-    // loop the clouds
+    //Loops the clouds and gives them a parallax effect.
     for (CCNode *cloud in _clouds) {
-        // get the world position of the cloud
+        //Gets the world position of the cloud
         CGPoint cloudWorldPosition = [_parallaxBackground convertToWorldSpace:cloud.position];
-        // get the screen position of the cloud
+        //Gets the screen position of the cloud
         CGPoint cloudScreenPosition = [self convertToNodeSpace:cloudWorldPosition];
         
-        // if the left corner is one complete width off the screen,
-        // move it to the right
+        //If the left corner is one complete width off the screen, move it to the right.
         if (cloudScreenPosition.x <= (-1 * cloud.contentSize.width)) {
             for (CGPointObject *child in _parallaxBackground.parallaxArray) {
                 if (child.child == cloud) {
@@ -273,11 +276,13 @@
     }
 }
 
+//If the character collides with an object, game over is called.
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair*)pair character:(CCSprite*)character level:(CCNode*)level {
     [self gameOver];
     return TRUE;
 }
 
+//If the character passes through an obstacle, increase their points by 1.
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair character:(CCNode *)character goal:(CCNode *)goal {
     [goal removeFromParent];
     points++;

@@ -1,9 +1,9 @@
 //
 //  MainScene.h
-//  PROJECTNAME
+//  FlappyBird
 //
-//  Created by Benjamin Encz on 10/10/13.
-//  Copyright (c) 2014 MakeGamesWithUs inc. Free to use for all purposes.
+//  Created by Matt H on 2015-11-16.
+//  Copyright © 2015 Apportable. All rights reserved.
 //
 
 #import "CCNode.h"

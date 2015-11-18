@@ -2,8 +2,8 @@
 //  Obstacle.m
 //  FlappyBird
 //
-//  Created by Benjamin Encz on 10/02/14.
-//  Copyright (c) 2014 MakeGamesWithUs inc. Free to use for all purposes.
+//  Created by Matt H on 2015-11-16.
+//  Copyright © 2015 Apportable. All rights reserved.
 //
 
 #import "Obstacle.h"
