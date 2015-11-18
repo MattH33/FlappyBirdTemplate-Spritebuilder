@@ -124,7 +124,7 @@
 
 #pragma mark - Game Actions
 
-//Defines the gameOver method, which is called when the character collides with another object.
+//Defines the gameOver method, which is called when the character collides with another object. This makes the restart button appear, stops all actions 
 - (void)gameOver {
     if (!_gameOver) {
         _gameOver = TRUE;
