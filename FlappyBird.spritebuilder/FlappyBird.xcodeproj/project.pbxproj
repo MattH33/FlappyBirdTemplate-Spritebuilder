@@ -43,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		34B2876C1BFC0532000C5D3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B7E7DE341A76DB7D004234B7;
+			remoteInfo = cocos2dMacFramework;
+		};
 		B737894A180761A90076A88C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
@@ -155,10 +162,10 @@
 				BCF66F7319563563004691FD /* Character.m */,
 				BCF66F7419563563004691FD /* GamePlayScene.h */,
 				BCF66F7519563563004691FD /* GamePlayScene.m */,
-				BCF66F7619563563004691FD /* Goal.h */,
-				BCF66F7719563563004691FD /* Goal.m */,
 				BCF66F7819563563004691FD /* MainScene.h */,
 				BCF66F7919563563004691FD /* MainScene.m */,
+				BCF66F7619563563004691FD /* Goal.h */,
+				BCF66F7719563563004691FD /* Goal.m */,
 				BCF66F7A19563563004691FD /* Obstacle.h */,
 				BCF66F7B19563563004691FD /* Obstacle.m */,
 				B737893D1807617C0076A88C /* AppDelegate.h */,
@@ -173,6 +180,7 @@
 				B737894B180761A90076A88C /* libcocos2d.a */,
 				BC2B438B1A77575C00F945C3 /* libcocos2dAndroid.a */,
 				BC2B438D1A77575C00F945C3 /* libcocos2d-mac.a */,
+				34B2876D1BFC0532000C5D3A /* cocos2dMacFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,6 +328,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		34B2876D1BFC0532000C5D3A /* cocos2dMacFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = cocos2dMacFramework.framework;
+			remoteRef = 34B2876C1BFC0532000C5D3A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B737894B180761A90076A88C /* libcocos2d.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;

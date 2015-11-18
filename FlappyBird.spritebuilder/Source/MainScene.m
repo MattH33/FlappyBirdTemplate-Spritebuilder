@@ -24,21 +24,20 @@
 @end
 
 @implementation MainScene {
+    
     //Creates variables to define the parallax ratios of the bushes and clouds.
     CGPoint _cloudParallaxRatio;
     CGPoint _bushParallaxRatio;
-    
     CCNode *_parallaxContainer;
     CCParallaxNode *_parallaxBackground;
     
+    //Connects the ground, cloud, and bush objects created in Spritebuilder to code variables.
     CCNode *_ground1;
     CCNode *_ground2;
     NSArray *_grounds;
-    
     CCNode *_cloud1;
     CCNode *_cloud2;
     NSArray *_clouds;
-    
     CCNode *_bush1;
     CCNode *_bush2;
     NSArray *_bushes;
@@ -60,6 +59,7 @@
 - (void)didLoadFromCCB {
     self.userInteractionEnabled = TRUE;
     
+    //Places the identical grounds, clouds, and bushes into their own arrays, to be used as loops.
     _grounds = @[_ground1, _ground2];
     _clouds = @[_cloud1, _cloud2];
     _bushes = @[_bush1, _bush2];
@@ -68,16 +68,18 @@
     _parallaxBackground = [CCParallaxNode node];
     [_parallaxContainer addChild:_parallaxBackground];
     
-    //Note that the bush ratio is larger than the cloud
+    //The bush parallax ratio is larger than the cloud, because the clouds would be further away.
     _bushParallaxRatio = ccp(0.9, 1);
     _cloudParallaxRatio = ccp(0.5, 1);
     
+    //Sets the bushes up when the scene loads
     for (CCNode *bush in _bushes) {
         CGPoint offset = bush.position;
         [self removeChild:bush];
         [_parallaxBackground addChild:bush z:0 parallaxRatio:_bushParallaxRatio positionOffset:offset];
     }
     
+    //Sets the clouds up when the scene loads.
     for (CCNode *cloud in _clouds) {
         CGPoint offset = cloud.position;
         [self removeChild:cloud];
@@ -85,12 +87,13 @@
     }
     
     for (CCNode *ground in _grounds) {
-        // set collision txpe
+        
+        //Sets the ground's collision type.
         ground.physicsBody.collisionType = @"level";
         ground.zOrder = DrawingOrderGround;
     }
     
-    // set this class as delegate
+    //Sets this class as delegate
     physicsNode.collisionDelegate = self;
     
     _obstacles = [NSMutableArray array];
@@ -102,6 +105,7 @@
 
 #pragma mark - Touch Handling
 
+//Defines how touch events are handled.
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     if (!_gameOver) {
         [character.physicsBody applyAngularImpulse:10000.f];
@@ -120,6 +124,7 @@
 
 #pragma mark - Game Actions
 
+//Defines the gameOver method, which is called when the character collides with another object.
 - (void)gameOver {
     if (!_gameOver) {
         _gameOver = TRUE;

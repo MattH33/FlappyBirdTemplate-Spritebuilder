@@ -18,19 +18,18 @@
 }
 
 -(void)update:(CCTime)delta
-//This will be run every frame.
-//delta is the time that has elapsed since the last time it was run. This is usually once every second, but can be bigger if the game slows down
+//This will be run every frame. "delta" is the time that has elapsed since the last time it was run. This is usually once every second, but it can be more if the game slows down.
 {
-    // Increment the time since the last obstacle was added
-    timeSinceObstacle += delta; // delta is approximately 1/60th of a second
+    //Increment the time since the last obstacle was added.
+    timeSinceObstacle += delta;
     
-    // Check to see if two seconds have passed
+    //Checks to see if two seconds have passed
     if (timeSinceObstacle > 2.0f)
     {
-        // Add a new obstacle
+        //If it's been 2 seconds, add another obstacle.
         [self addObstacle];
         
-        // Then reset the timer.
+        //Reset the timer so this process can run again.
         timeSinceObstacle = 0.0f;
     }
 }

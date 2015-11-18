@@ -10,6 +10,7 @@
 
 @interface Character : CCSprite
 
+//Creates a method called flap.
 -(void) flap;
 
 @end

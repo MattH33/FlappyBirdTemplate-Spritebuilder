@@ -11,6 +11,7 @@
 
 @interface MainScene : GamePlayScene
 
+//Creates a method called gameOver.
 -(void) gameOver;
 
 @end
